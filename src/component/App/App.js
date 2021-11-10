@@ -7,21 +7,7 @@ import Filtr from "../Filter/Filter";
 
 
 export default function App() {
-  // state = {
-  //   contacts: [],
-  //   filter: "",
-  // };
-
-  // componentDidMount() {
-  //   const contactsMem = JSON.parse(localStorage.getItem("contacts"));
-  //   if(contactsMem) this.setState({ contacts: contactsMem });
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-  //   }
-  // }
+  
   const [contacts, setContacts] = useState(() => {
     return JSON.parse(localStorage.getItem("contacts")) ?? [];
   });
@@ -37,9 +23,6 @@ export default function App() {
       name,
       number,
     };
-
-    // const { contacts } = this.state;
-
     if (
       contacts.find(
         (contact) => contact.name.toLowerCase() === name.toLowerCase()
@@ -47,34 +30,23 @@ export default function App() {
     ) {
       alert(`${name} is already in contacts.`);
     } else {
-      // this.setState(({ contacts }) => ({
-      //   contacts: [contact, ...contacts],
-      // }));
       setContacts((contacts) => [contact, ...contacts]);
     }
   };
 
   const deleteContact = (id) => setContacts(contacts.filter((contact) => contact.id !== id));
-    // this.setState(({ contacts }) => ({
-    //   contacts: contacts.filter((contact) => contact.id !== id),
-    // }));
+    
 
   const changeFilter = (e) => {
-    // this.setState({ filter: e.currentTarget.value });
     setFilter(e.currentTarget.value);
   };
 
   const visibleContacts = () => {
-    // const { contacts, filter } = this.state;
-    // const normalizedFilter = filter.toLowerCase();
-
     return contacts.filter((contact) =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
-  // render() {
-  //   const { contacts } = this.state;
     return (
       <div className={style.container}>
         <h1>Phonebook</h1>
@@ -90,5 +62,4 @@ export default function App() {
         
       </div>
     );
-  // }
 }

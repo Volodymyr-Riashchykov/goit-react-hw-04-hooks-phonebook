@@ -3,22 +3,16 @@ import AddContactInput from "../AddContactInput/AddContactInput";
 import style from './AddContact.module.css'
 
 export default function AddContact({ handleAddContact }) {
-    // state = {
-    //     name: "",
-    //     number: ""
-    // }
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
 
     const hahdleChange = e => {
-        // this.setState({ [e.currentTarget.name]: e.currentTarget.value })
         if (e.currentTarget.name === "name") setName(e.currentTarget.value);
         if (e.currentTarget.name === "number") setNumber(e.currentTarget.value);
     }
 
     const handleSubmit = e => {
     e.preventDefault();
-        // this.props.handleAddContact(this.state);
         handleAddContact(name, number);
         resetState();
     };
@@ -27,8 +21,7 @@ export default function AddContact({ handleAddContact }) {
         setName("");
         setNumber("");
     }
-        // this.setState({ name: "", number: "" });
-// render(){
+       
     return (
         <form className={style.inputForm} onSubmit={handleSubmit}>
             <AddContactInput
@@ -52,5 +45,4 @@ export default function AddContact({ handleAddContact }) {
             <button type="submit" className={style.btn}>Add contact</button>
         </form>
     )
-// }
 } 
